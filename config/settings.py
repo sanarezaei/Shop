@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     # 'psycopg2-binary',
     'crispy_forms',
     "crispy_bootstrap5",
+    'allauth',
+    'allauth.account',
+
 
 ]
 
@@ -59,13 +62,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    # Add the account middleware:
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    
+    # django allauth
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 ROOT_URLCONF = 'config.urls'
 
@@ -148,3 +156,11 @@ SIGNUP_REDIRECT_URL = 'home'
 # crispy forms setting
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+# all auth settings
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMIL = True
