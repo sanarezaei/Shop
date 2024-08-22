@@ -12,6 +12,11 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    environment:
+      - "DJANGO_SECRET_KEY=django-insecure-aq4=)pkeshsv*um0jyqet0#jq-clg#e##s6f4zc&@eaa@u2eu+"
+      - "DJANGO_DEBUG=True"
+
+    
 
 
 
